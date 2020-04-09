@@ -7,6 +7,11 @@ dotenv.config({path: './config.env'});
 
 const app = express();
 
+// Dev logging - able to log the http method, endpoint of request, and other logistics
+if (process.env.NODE_ENV == 'development') {
+    app.use(morgan('dev'));
+}
+
 // Connecting Profile page routes to server
 app.use('/api/v1/profile', require('./routes/profile'));
 
